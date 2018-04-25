@@ -17,6 +17,8 @@ COPY squid.conf /etc/squid3/squid.conf
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
+RUN echo "cache deny all" >> /etc/squid3/squid.conf
+
 EXPOSE 3128/tcp
 VOLUME ["${SQUID_CACHE_DIR}"]
 ENTRYPOINT ["/sbin/entrypoint.sh"]
